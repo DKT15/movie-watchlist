@@ -42,21 +42,32 @@ header {
 }
 
 #search {
+    width: 300px;
     margin-top: 32px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    position: relative;
+    margin: 0 auto;
+    height: 30px;
 }
 
 #search-movie {
-    width: 400px;
+    padding: 0 64px;
     border-radius: 4px;
+    border: 1px solid black;
 }
 
 #search-btn {
-    border-radius: 4px;
+    border-radius: 3px;
     background-color: #F9FAFB;
-    padding: 8px 16px;
+    padding: 0 16px;
+    border: 1px solid black;
+    position: absolute;
+    top: 0;
+    right: 0;
+    top: 0;
+    height: 30px;
+    cursor: pointer;
 }
 
 /* HEADER CSS END */
