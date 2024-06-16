@@ -1,10 +1,24 @@
 html,
 body,
-h1 {
+h1,
+h3,
+p {
     margin: 0;
     padding: 0;
     font-family: "Inter", sans-serif;
 }
+
+p {
+    color: black;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* FIND YOUR FILM PAGE START */
 
 /* HEADER CSS START */
 
@@ -15,6 +29,9 @@ header {
     background-size: 2000px;
     background-repeat: no-repeat;
     height: 240px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .header-text {
@@ -25,6 +42,7 @@ header {
 }
 
 #search {
+    margin-top: 32px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -45,10 +63,43 @@ header {
 
 /* MAIN CONTENT START */
 
+#explore-section {
+    max-width: 400px;
+    height: 70vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #DFDDDD;
+}
 
-
-
-
-
+.fa-film {
+    font-size: 56px;
+}
 
 /* MAIN CONTENT END */
+
+/* FIND YOUR FILM PAGE END */
+
+/* WATCHLIST PAGE START*/
+
+/* MAIN CONTENT START */
+
+.add-movie-wrapper {
+    display: flex;
+    flex-direction: row;
+    font-weight: 700;
+    margin: 24px 0;
+    cursor: pointer;
+}
+
+.fa-circle-xmark {
+    padding-right: 8px;
+    font-size: 20px;
+    color: black;
+}
+
+/* MAIN CONTENT END */
+
+/* WATCHLIST PAGE END*/
