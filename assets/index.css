@@ -1,5 +1,54 @@
 html,
-body {
+body,
+h1 {
     margin: 0;
     padding: 0;
+    font-family: "Inter", sans-serif;
 }
+
+/* HEADER CSS START */
+
+header {
+    color: white;
+    background-image: url(./movie-theatre-img.jpg);
+    background-position: 20%;
+    background-size: 2000px;
+    background-repeat: no-repeat;
+    height: 240px;
+}
+
+.header-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 20px 0;
+}
+
+#search {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#search-movie {
+    width: 400px;
+    border-radius: 4px;
+}
+
+#search-btn {
+    border-radius: 4px;
+    background-color: #F9FAFB;
+    padding: 8px 16px;
+}
+
+/* HEADER CSS END */
+
+/* MAIN CONTENT START */
+
+
+
+
+
+
+
+/* MAIN CONTENT END */
