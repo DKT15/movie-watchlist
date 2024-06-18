@@ -113,4 +113,11 @@ header {
 
 /* MAIN CONTENT END */
 
+/* MOVIES SECTION */
+
+.movie-img {
+    width: 400px;
+    height: 400px;
+}
+
 /* WATCHLIST PAGE END*/
