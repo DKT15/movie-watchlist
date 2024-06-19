@@ -26,13 +26,15 @@ function pushData(arr1, arr2, arr3) {
 //Using the movie title as a result of GET, the api is being used again based on the title of the movie. The HTML code then collects and formats everything that I'm asking from the api which includes, movie title, image, genre etc.
 function renderData(titleArr) {
   filmContainerEl.innerHTML = "";
-
+  let Html = [];
   for (let movie of titleArr) {
     fetch(`http://www.omdbapi.com/?apikey=e56c8dbc&t=${movie}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        filmContainerEl.innerHTML += `
+        if (data && data.Response === "True") {
+          Html = filmContainerEl;
+          console.log(data);
+          filmContainerEl.innerHTML += `
         <div class="movie-wrapper">
           <img class="movie-img" src="${data.Poster}">
           <div class="text-content">
@@ -51,6 +53,7 @@ function renderData(titleArr) {
           </div>
         </div>
         `;
+        }
       });
   }
 }
