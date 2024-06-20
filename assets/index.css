@@ -115,9 +115,28 @@ header {
 
 /* MOVIES SECTION */
 
+#film-container {
+    grid-area: content;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.movie-wrapper {
+    display: flex;
+    margin: 20px 0;
+}
+
 .movie-img {
-    width: 400px;
-    height: 400px;
+    width: 200px;
+    height: 300px;
+}
+
+.title {
+    display: flex;
+}
+
+.line2 {
+    display: flex;
 }
 
 /* WATCHLIST PAGE END*/
