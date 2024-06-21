@@ -14,15 +14,18 @@ document.addEventListener("click", (e) => {
 });
 
 formEl.addEventListener("submit", (e) => {
+  // stops data from previous search being added onto the data from the new search.
+  moviesTitleArr = [];
+  movieId = [];
+  //preventing the from from refreshing the page.
   e.preventDefault();
   fetch(`http://www.omdbapi.com/?apikey=e56c8dbc&s=${searchEl.value}`)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       pushData(data.Search, moviesTitleArr, movieId); //using the pushData function to get access to each movie that appears in the search. It is then being used to extract each title and imdbID.
       renderData(moviesTitleArr); //this uses the movie title that has been passed in from the API.
     });
-  formEl.reset();
+  formEl.reset(); //resets the search once submitted.
 });
 
 const pushData = (arr1, arr2, arr3) => {
@@ -34,6 +37,7 @@ const pushData = (arr1, arr2, arr3) => {
 
 //Using the movie title as a result of GET, the api is being used again based on the title of the movie. The HTML code then collects and formats everything that I'm asking from the api which includes, movie title, image, genre etc.
 const renderData = (titleArr) => {
+  // clearing out the Dom to prepare it for the movies I would like to add in.
   filmContainerEl.innerHTML = "";
   for (let movie of titleArr) {
     fetch(`http://www.omdbapi.com/?apikey=e56c8dbc&t=${movie}`)
@@ -65,9 +69,9 @@ const renderData = (titleArr) => {
   }
 };
 
-const addToWatchlist = (index) => {
-  watchlist.push(moviesTitleArr[index]);
-  watchlistId.push(movieId[index]);
+const addToWatchlist = (dataId) => {
+  watchlist.push(moviesTitleArr[dataId]);
+  watchlistId.push(movieId[dataId]);
   localStorage.setItem("movie", JSON.stringify(watchlist));
   localStorage.setItem("movieId", JSON.stringify(watchlistId));
 };
