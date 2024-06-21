@@ -105,7 +105,8 @@ header {
     cursor: pointer;
 }
 
-.fa-circle-plus {
+.fa-circle-plus,
+.fa-circle-minus {
     padding-right: 8px;
     font-size: 20px;
     color: black;
