@@ -74,7 +74,8 @@ header {
 
 /* MAIN CONTENT START */
 
-#explore-section {
+#film-section,
+#watchlist-section {
     max-width: 400px;
     height: 70vh;
     margin: 0 auto;
@@ -116,7 +117,8 @@ header {
 
 /* MOVIES SECTION */
 
-#film-container {
+#film-container,
+#watchlist-container {
     grid-area: content;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
