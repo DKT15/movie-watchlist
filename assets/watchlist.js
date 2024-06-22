@@ -1,21 +1,23 @@
 const movie = JSON.parse(localStorage.getItem("movie"));
 const movieId = JSON.parse(localStorage.getItem("movieId"));
 const watchlistContainerEl = document.getElementById("watchlist-container");
+let watchlistArr = JSON.parse(localStorage.getItem("watchlist") || "[]");
 
 document.addEventListener("click", (e) => {
   if (e.target.dataset.remove) {
-    //   console.log(removeFromWatchlist(e.target.dataset.remove));
+    watchlistArr = watchlistArr.filter(
+      (movie) => movie.imdbID !== e.target.dataset.remove
+    );
+    localStorage.setItem("watchlist", JSON.stringify(watchlistArr));
+    addToWatchlist();
   }
 });
 
-watchlistContainerEl.innerHTML = "";
-for (let movie of film) {
-  fetch(`http://www.omdbapi.com/?apikey=e56c8dbc&t=${movie}`)
-    .then((res) => res.json())
-    .then((data) => {
-      if (data && data.Response === "True") {
-        console.log(data);
-        watchlistContainerEl.innerHTML += `
+const addToWatchlist = (data) => {
+  watchlistContainerEl.innerHTML = "";
+  if (watchlistArr.length) {
+    watchlistArr.forEach((data) => {
+      watchlistContainerEl.innerHTML += `
       <div class="movie-wrapper">
         <img class="movie-img" src="${data.Poster}">
         <div class="text-content">
@@ -34,8 +36,6 @@ for (let movie of film) {
         </div>
       </div>
       `;
-      }
     });
-}
-
-const addToWatchlist = () => {};
+  }
+};

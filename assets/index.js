@@ -4,12 +4,19 @@ const filmContainerEl = document.getElementById("film-container");
 
 let moviesTitleArr = [];
 let movieId = [];
-let watchlist = [];
 let watchlistId = [];
+let watchlist = JSON.parse(localStorage.getItem("watchlist") || "[]");
 
 document.addEventListener("click", (e) => {
   if (e.target.dataset.watchlist) {
-    console.log(addToWatchlist(e.target.dataset.watchlist));
+    const targetMovieObj = moviesTitleArr.filter(
+      (movie) => movie.imdbID === e.target.dataset.watchlist
+    )[0];
+    if (!watchlist.includes(targetMovieObj)) {
+      watchlist.push(targetMovieObj);
+    }
+    localStorage.setItem("watchlist", JSON.stringify(watchlist));
+    console.log(targetMovieObj);
   }
 });
 
@@ -64,14 +71,17 @@ const renderData = (titleArr) => {
           </div>
         </div>
         `;
+        } else {
+          noData();
         }
       });
   }
 };
 
-const addToWatchlist = (dataId) => {
-  watchlist.push(moviesTitleArr[dataId]);
-  watchlistId.push(movieId[dataId]);
-  localStorage.setItem("movie", JSON.stringify(watchlist));
-  localStorage.setItem("movieId", JSON.stringify(watchlistId));
+const noData = () => {
+  filmContainerEl.innerHTML = `
+      <div class="no-data-container">
+          <h3 class="no-data-text> We can't find what you're looking for! Try again.</h3>
+      </div>
+  `;
 };
