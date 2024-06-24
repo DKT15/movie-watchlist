@@ -4,21 +4,24 @@ const filmContainerEl = document.getElementById("film-container");
 
 let moviesTitleArr = [];
 let movieId = [];
-let watchlistId = [];
-let watchlist = JSON.parse(localStorage.getItem("watchlist") || "[]");
+let watchlist = [];
 
 document.addEventListener("click", (e) => {
   if (e.target.dataset.watchlist) {
-    const targetMovieObj = moviesTitleArr.filter(
-      (movie) => movie.imdbID === e.target.dataset.watchlist
-    )[0];
-    if (!watchlist.includes(targetMovieObj)) {
-      watchlist.push(targetMovieObj);
-    }
-    localStorage.setItem("watchlist", JSON.stringify(watchlist));
-    console.log(targetMovieObj);
+    console.log(e.target.dataset.watchlist);
+    getIMBDId(e.target.dataset.watchlist);
+    console.log(getIMBDId(e.target.dataset.watchlist));
   }
 });
+
+function getIMBDId(IMBD) {
+  fetch(`https://www.omdbapi.com/?apikey=e56c8dbc&i=${IMBD}`)
+    .then((res) => res.json)
+    .then((data) => {
+      watchlist.push(data);
+      localStorage.setItem("watchlist", JSON.stringify(watchlist));
+    });
+}
 
 formEl.addEventListener("submit", (e) => {
   // stops data from previous search being added onto the data from the new search.
@@ -71,17 +74,7 @@ const renderData = (titleArr) => {
           </div>
         </div>
         `;
-        } else {
-          noData();
         }
       });
   }
-};
-
-const noData = () => {
-  filmContainerEl.innerHTML = `
-      <div class="no-data-container">
-          <h3 class="no-data-text> We can't find what you're looking for! Try again.</h3>
-      </div>
-  `;
 };

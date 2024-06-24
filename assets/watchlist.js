@@ -1,5 +1,3 @@
-const movie = JSON.parse(localStorage.getItem("movie"));
-const movieId = JSON.parse(localStorage.getItem("movieId"));
 const watchlistContainerEl = document.getElementById("watchlist-container");
 let watchlistArr = JSON.parse(localStorage.getItem("watchlist") || "[]");
 
@@ -13,7 +11,7 @@ document.addEventListener("click", (e) => {
   }
 });
 
-const addToWatchlist = (data) => {
+const addToWatchlist = () => {
   watchlistContainerEl.innerHTML = "";
   if (watchlistArr.length) {
     watchlistArr.forEach((data) => {
