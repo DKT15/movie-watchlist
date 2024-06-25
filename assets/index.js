@@ -5,36 +5,29 @@ const filmContainerEl = document.getElementById("film-container");
 let moviesTitleArr = [];
 let movieId = [];
 let moviesArray = [];
-const localStorageData = localStorage.getItem("watchlist")
+const storeMovie = localStorage.getItem("watchlist")
   ? JSON.parse(localStorage.getItem("watchlist"))
-  : [];
+  : []; // setting up the local storage variable.
 
-let watchlist = localStorageData.length ? localStorageData : []; // here will add movies
+let watchlist = storeMovie.length ? storeMovie : []; // movies are added to the watchlist
 
+// when the add button is clicked, the movie is stored in local storage. The ID is used to tell the code which specific movie has been clicked.
 document.addEventListener("click", (e) => {
   if (e.target.dataset.watchlist) {
-    getIMBDId(e.target.dataset.watchlist);
+    getIMBDID(e.target.dataset.watchlist);
     localStorage.setItem("watchlist", JSON.stringify(watchlist));
   }
 });
 
-const getIMBDId = (IMBD) => {
+// getting the IMBDID for it to be stored in local storage. Adding the the specifc movie based on its ID to the start of the watchlist array.
+const getIMBDID = (IMBD) => {
   for (let movie of moviesArray) {
     if (IMBD == movie.imdbID) {
       watchlist.unshift(movie);
     }
   }
-  return watchlist;
+  return watchlist; // returning so it executes.
 };
-
-// function getIMBDId(IMBD) {
-//   fetch(`https://www.omdbapi.com/?apikey=e56c8dbc&i=${IMBD}`)
-//     .then((res) => res.json)
-//     .then((data) => {
-//       watchlist.push(data);
-//       localStorage.setItem("watchlist", JSON.stringify(watchlist));
-//     });
-// }
 
 formEl.addEventListener("submit", (e) => {
   // stops data from previous search being added onto the data from the new search.

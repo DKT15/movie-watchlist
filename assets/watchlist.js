@@ -1,5 +1,8 @@
 const watchlistContainerEl = document.getElementById("watchlist-container");
-let watchlistArr = JSON.parse(localStorage.getItem("watchlist")) || [];
+// let watchlistArr = JSON.parse(localStorage.getItem("watchlist")) || [];
+let watchlistArr = localStorage.getItem("watchlist")
+  ? JSON.parse(localStorage.getItem("watchlist"))
+  : [];
 
 document.addEventListener("click", (e) => {
   if (e.target.dataset.remove) {
@@ -8,8 +11,9 @@ document.addEventListener("click", (e) => {
   }
 });
 
+// If anything is added to the watchlist it will be displayed. Otherwise the DOM will display a message requesting the user to add content.
 const addToWatchlist = () => {
-  if (watchlistArr) {
+  if (watchlistArr.length) {
     watchlistContainerEl.innerHTML = "";
     watchlistArr.forEach((data) => {
       watchlistContainerEl.innerHTML += `
@@ -33,7 +37,18 @@ const addToWatchlist = () => {
       `;
     });
   } else {
-    watchlistContainerEl.innerText = "Hello";
+    watchlistContainerEl.innerHTML = `
+    <div></div>
+      <div id="watchlist-section">
+        <h3>Your watchlist is looking a little empty...</h3>
+          <div class="add-movie">
+          <a class="add-movie-wrapper" href="/film.html">
+            <i class="fa-solid fa-circle-plus"></i>
+            <p>Let's add some movies!</p>
+          </a>
+          </div>
+      </div>
+    <div></div>`;
   }
 };
 
