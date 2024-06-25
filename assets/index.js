@@ -4,24 +4,37 @@ const filmContainerEl = document.getElementById("film-container");
 
 let moviesTitleArr = [];
 let movieId = [];
-let watchlist = [];
+let moviesArray = [];
+const localStorageData = localStorage.getItem("watchlist")
+  ? JSON.parse(localStorage.getItem("watchlist"))
+  : [];
+
+let watchlist = localStorageData.length ? localStorageData : []; // here will add movies
 
 document.addEventListener("click", (e) => {
   if (e.target.dataset.watchlist) {
-    console.log(e.target.dataset.watchlist);
     getIMBDId(e.target.dataset.watchlist);
-    console.log(getIMBDId(e.target.dataset.watchlist));
+    localStorage.setItem("watchlist", JSON.stringify(watchlist));
   }
 });
 
-function getIMBDId(IMBD) {
-  fetch(`https://www.omdbapi.com/?apikey=e56c8dbc&i=${IMBD}`)
-    .then((res) => res.json)
-    .then((data) => {
-      watchlist.push(data);
-      localStorage.setItem("watchlist", JSON.stringify(watchlist));
-    });
-}
+const getIMBDId = (IMBD) => {
+  for (let movie of moviesArray) {
+    if (IMBD == movie.imdbID) {
+      watchlist.unshift(movie);
+    }
+  }
+  return watchlist;
+};
+
+// function getIMBDId(IMBD) {
+//   fetch(`https://www.omdbapi.com/?apikey=e56c8dbc&i=${IMBD}`)
+//     .then((res) => res.json)
+//     .then((data) => {
+//       watchlist.push(data);
+//       localStorage.setItem("watchlist", JSON.stringify(watchlist));
+//     });
+// }
 
 formEl.addEventListener("submit", (e) => {
   // stops data from previous search being added onto the data from the new search.
@@ -53,6 +66,7 @@ const renderData = (titleArr) => {
     fetch(`http://www.omdbapi.com/?apikey=e56c8dbc&t=${movie}`)
       .then((res) => res.json())
       .then((data) => {
+        moviesArray.unshift(data);
         if (data && data.Response === "True") {
           console.log(data);
           filmContainerEl.innerHTML += `

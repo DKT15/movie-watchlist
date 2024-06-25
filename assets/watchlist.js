@@ -1,19 +1,16 @@
 const watchlistContainerEl = document.getElementById("watchlist-container");
-let watchlistArr = JSON.parse(localStorage.getItem("watchlist") || "[]");
+let watchlistArr = JSON.parse(localStorage.getItem("watchlist")) || [];
 
 document.addEventListener("click", (e) => {
   if (e.target.dataset.remove) {
-    watchlistArr = watchlistArr.filter(
-      (movie) => movie.imdbID !== e.target.dataset.remove
-    );
-    localStorage.setItem("watchlist", JSON.stringify(watchlistArr));
-    addToWatchlist();
+    watchlistArr = e.target.dataset.remove;
+    localStorage.removeItem("watchlist", JSON.stringify(watchlistArr));
   }
 });
 
 const addToWatchlist = () => {
-  watchlistContainerEl.innerHTML = "";
-  if (watchlistArr.length) {
+  if (watchlistArr) {
+    watchlistContainerEl.innerHTML = "";
     watchlistArr.forEach((data) => {
       watchlistContainerEl.innerHTML += `
       <div class="movie-wrapper">
@@ -35,5 +32,9 @@ const addToWatchlist = () => {
       </div>
       `;
     });
+  } else {
+    watchlistContainerEl.innerText = "Hello";
   }
 };
+
+addToWatchlist();
