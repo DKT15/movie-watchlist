@@ -19,10 +19,10 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// getting the IMBDID for it to be stored in local storage. Adding the the specifc movie based on its ID to the start of the watchlist array.
-const getIMBDID = (IMBD) => {
+// getting the IMDBID for it to be stored in local storage. Adding the the specifc movie based on its ID to the start of the watchlist array.
+const getIMBDID = (IMDB) => {
   for (let movie of moviesArray) {
-    if (IMBD == movie.imdbID) {
+    if (IMDB == movie.imdbID) {
       watchlist.unshift(movie);
     }
   }

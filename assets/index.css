@@ -111,6 +111,11 @@ header {
     padding-right: 8px;
     font-size: 20px;
     color: black;
+    cursor: pointer;
+}
+
+.add-to-watchlist {
+    cursor: pointer;
 }
 
 /* MAIN CONTENT END */

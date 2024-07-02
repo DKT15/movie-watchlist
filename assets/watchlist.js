@@ -1,5 +1,4 @@
 const watchlistContainerEl = document.getElementById("watchlist-container");
-// let watchlistArr = JSON.parse(localStorage.getItem("watchlist")) || [];
 let watchlistArr = localStorage.getItem("watchlist")
   ? JSON.parse(localStorage.getItem("watchlist"))
   : [];
