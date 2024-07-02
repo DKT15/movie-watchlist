@@ -3,10 +3,13 @@ let watchlistArr = localStorage.getItem("watchlist")
   ? JSON.parse(localStorage.getItem("watchlist"))
   : [];
 
+// Allows for movie to be deleted when the button is clicked.
 document.addEventListener("click", (e) => {
   if (e.target.dataset.remove) {
-    watchlistArr = e.target.dataset.remove;
-    localStorage.removeItem("watchlist", JSON.stringify(watchlistArr));
+    const index = watchlistArr.indexOf(e.target.dataset.remove);
+    watchlistArr.splice(index, 1);
+    localStorage.setItem("watchlist", JSON.stringify(watchlistArr));
+    window.location.reload();
   }
 });
 
