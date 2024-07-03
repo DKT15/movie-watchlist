@@ -31,7 +31,7 @@ This web application allows users to search for movies using the OMDb Api, the u
 
 ## Screenshot
 
-![Movie watchlist image](/assets/prework-study-guide-img.jpg)
+![Movie watchlist image](/assets/movie-watchlist-img.png)
 
 ## Deployment
 
