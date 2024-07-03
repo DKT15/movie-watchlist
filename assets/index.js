@@ -16,6 +16,7 @@ document.addEventListener("click", (e) => {
   if (e.target.dataset.watchlist) {
     getIMBDID(e.target.dataset.watchlist);
     localStorage.setItem("watchlist", JSON.stringify(watchlist));
+    alert("Added!");
   }
 });
 
