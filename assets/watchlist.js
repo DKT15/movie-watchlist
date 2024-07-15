@@ -44,7 +44,7 @@ const addToWatchlist = () => {
       <div id="watchlist-section">
         <h3>Your watchlist is looking a little empty...</h3>
           <div class="add-movie">
-          <a class="add-movie-wrapper" href="/film.html">
+          <a class="add-movie-wrapper" href="/index.html">
             <i class="fa-solid fa-circle-plus"></i>
             <p>Let's add some movies!</p>
           </a>
