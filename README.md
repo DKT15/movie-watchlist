@@ -35,7 +35,7 @@ This web application allows users to search for movies using the OMDb Api, the u
 
 ## Deployment
 
-You can access the website with this [link.]()
+You can access the website with this [link.](https://dkt-movie-watchlist.netlify.app/)
 
 ## Contributing
 
