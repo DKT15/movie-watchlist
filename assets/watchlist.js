@@ -42,7 +42,7 @@ const addToWatchlist = () => {
     watchlistContainerEl.innerHTML = `
     <div></div>
       <div id="watchlist-section">
-        <h3>Your watchlist is looking a little empty...</h3>
+        <h3 class="watchlist-text">Your watchlist is looking a little empty...</h3>
           <div class="add-movie">
           <a class="add-movie-wrapper" href="/index.html">
             <i class="fa-solid fa-circle-plus"></i>
